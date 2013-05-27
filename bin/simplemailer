@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+PROGNAME = File.basename(__FILE__)
+
+require 'optparse'
+require 'methadone'
+require 'simplemailer.rb'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do |to| # Add args you want: |like,so|
+    # your program code here
+    # You can access CLI options via
+    # the options Hash
+    logger.level = Logger::DEBUG if options[:debug]
+    options[:to] = ARGV.dup
+    SimpleMailer.run(options)
+  end
+
+  # supplemental methods here
+
+  # Declare command-line interface here
+
+  description "Provide a simple mailing script"
+
+  # Accept flags via:
+  # on("--flag VAL","Some flag")
+  # options[flag] will contain VAL
+
+  on("-s SUBJECT","--subject","Subject to use in the message.","Default is <no subject>")
+  on("-f FROM","--from","From address.")
+  on("-b BODY","--body","Body of message","Default is to read from STDIN")
+
+  # Specify switches via:
+  # on("--[no-]switch","Some switch")
+  on("--debug","Turn on debugging")
+  
+  # Or, just call OptionParser methods on opts
+  #
+  # Require an argument
+  # arg :some_arg 
+  #
+  # # Make an argument optional
+  # arg :optional_arg, :optional
+  arg :to, :many, "Recipients"
+
+  defaults_from_env_var ENV['MAIL_TRANSPORT']
+  defaults_from_config_file '.simplemailer.rc'
+
+  version SimpleMailer::VERSION
+
+  use_log_level_option
+
+  go!
+end
