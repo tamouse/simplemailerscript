@@ -6,9 +6,10 @@ Copyright:: Copyright (c) 2013 Tamara Temple Web Development
 
 License:: mit, see LICENSE.txt
 
+A simple command line script that will send a mail. Useful in
+servers/environments where you don't necessarily have a full-blown
+email transport, or a command to issue emails easily.
 
-
-DESCRIBE YOUR GEM HERE
 
 == Links
 
