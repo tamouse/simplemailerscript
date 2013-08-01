@@ -1,0 +1,10 @@
+from: someone@gmail.com
+transport:
+  method: smtp
+  options:
+    username: someone@gmail.com
+    password: something
+    address: smtp.gmail.com
+    port: 587
+    authentication: plain
+    enable_starttls_auto: true

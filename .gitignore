@@ -4,3 +4,4 @@ pkg
 html
 .rspec
 tmp/
+Gemfile.lock
