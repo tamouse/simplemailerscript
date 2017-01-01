@@ -1,0 +1,36 @@
+= simplemailer - A really simpler mailer command line script that sort of emulates mail(1)
+
+Author::  Tamara Temple <tamouse@gmail.com>
+Copyright:: Copyright (c) 2013 Tamara Temple Web Development
+
+
+License:: mit, see LICENSE.txt
+
+A simple command line script that will send a mail. Useful in
+servers/environments where you don't necessarily have a full-blown
+email transport, or a command to issue emails easily.
+
+
+== Links
+
+* {Source on Github}[http://github.com/tamouse/simplemailerscript]
+
+== Install
+
+    $ gem install simplermailerscript
+
+
+== Examples
+
+    $ cat body.txt | simplemailer recipient@example.com
+
+(See simplemailer --help for more options and info.)
+
+
+== Contributing
+
+1. Fork it
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create new Pull Request
